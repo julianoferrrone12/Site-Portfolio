@@ -1,46 +1,86 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
+import { i18n } from "../translate/i18n";
+import cripto from "../assets/img/bitcoin.jpg";
+import expert from "../assets/img/expert.png";
+import insta from "../assets/img/instagram.jpg";
+import compet from "../assets/img/compet.jpg";
+import python from "../assets/img/python.jpg";
+import reunioes from "../assets/img/reunioes.jpg";
+import tempo from "../assets/img/tempo.png";
+import API from "../assets/img/brasil.webp";
+import site from "../assets/img/J.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
+
 export const Projects = () => {
 
-  const projects = [
+  const projects_1 = [
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
+      title: i18n.t('projects.title_1'),
+      description: i18n.t('projects.description_1'),
+      imgUrl: site,
+      URL: "https://github.com/julianoferrrone12/Site-Portfolio",
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
+      title: i18n.t('projects.title_2'),
+      description: i18n.t('projects.description_2'),
+      imgUrl: expert,
+      URL: "https://github.com/julianoferrrone12/Call-an-expert",
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
+      title: i18n.t('projects.title_3'),
+      description: i18n.t('projects.description_3'),
+      imgUrl: insta,
+      URL: "https://github.com/julianoferrrone12/InstagramProject",
     },
   ];
+
+  const projects_2 = [
+    {
+      title: "Compet Site",
+      description: "Repository for backup and development of COMPET's website",
+      imgUrl: compet,
+      URL: "https://github.com/julianoferrrone12/compet_site",
+    },
+    {
+      title: "Automating Processes",
+      description: "Process automation using Python, Anaconda Jupyter, Pyautogui and Pyperclip",
+      imgUrl: python,
+      URL: "https://github.com/julianoferrrone12/Automatizacao-de-Processos",
+    },
+    {
+      title: "Meeting Room Manager ",
+      description: "Meeting Room Manager with angular",
+      imgUrl: reunioes,
+      URL: "https://github.com/julianoferrrone12/Gerenciador_de_salas_de_reunioes",
+    },
+    
+  ]
+
+  const projects_3 = [
+    {
+      title: "Cryptocoins",
+      description: "Requesting data from a cryptocurrency API",
+      imgUrl: cripto,
+      URL: "https://github.com/julianoferrrone12/Criptomoedas",
+    },
+    {
+      title: "Brazilian Cities API",
+      description: "Rest API for querying Brazilian cities with Spring Boot",
+      imgUrl: API,
+      URL: "https://github.com/julianoferrrone12/Brazilian_Cities_API",
+    },
+    {
+      title: "Weather forecast via API",
+      description: "Creating a project to consult the weather forecast via API",
+      imgUrl: tempo,
+      URL: "https://github.com/julianoferrrone12/Previs-o-do-tempo-via-API",
+    },
+    
+  ]
 
   return (
     <section className="project" id="project">
@@ -50,25 +90,25 @@ export const Projects = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                <h2>Projects</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <h2>{i18n.t('projects.pageTitle')}</h2>
+                <p>{i18n.t('projects.pageDescription')}</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
-                      <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                      <Nav.Link eventKey="first">{i18n.t('projects.tab_1')}</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                      <Nav.Link eventKey="second">{i18n.t('projects.tab_2')}</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="third">Tab 3</Nav.Link>
+                      <Nav.Link eventKey="third">{i18n.t('projects.tab_3')}</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
                     <Tab.Pane eventKey="first">
                       <Row>
                         {
-                          projects.map((project, index) => {
+                          projects_1.map((project, index) => {
                             return (
                               <ProjectCard
                                 key={index}
@@ -79,11 +119,34 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+
+                    <Tab.Pane eventKey="second">
+                    <Row>
+                        {
+                          projects_2.map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                    <Row>
+                        {
+                          projects_3.map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
